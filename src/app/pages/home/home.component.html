@@ -1,0 +1,32 @@
+<section class="hero">
+  <div class="contenedor hero__contenido">
+    <p class="hero__etiqueta">INVERSIONES LR</p>
+    <h1 class="hero__titulo">Montaña Stays</h1>
+    <p class="hero__descripcion">
+      Encuentra el alojamiento ideal para tu proxima estadia: apartamentos,
+      casas y cabañas en las mejores ciudades y destinos de Colombia,
+      verificados y listos para reservar.
+    </p>
+    <a routerLink="/alojamientos" class="boton boton--primario hero__boton">
+      Buscar alojamientos
+    </a>
+  </div>
+</section>
+
+<section class="seccion contenedor">
+  <h2 class="seccion__titulo">Alojamientos destacados</h2>
+  <p class="seccion__subtitulo">Los mejor calificados por nuestros huespedes.</p>
+
+  <div class="grid-alojamientos" *ngIf="(destacados$ | async) as destacados">
+    <app-tarjeta-alojamiento
+      *ngFor="let alojamiento of destacados"
+      [alojamiento]="alojamiento"
+    ></app-tarjeta-alojamiento>
+  </div>
+
+  <div class="seccion__cta">
+    <a routerLink="/alojamientos" class="boton boton--secundario">
+      Ver todos los alojamientos
+    </a>
+  </div>
+</section>

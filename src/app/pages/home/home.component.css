@@ -1,0 +1,38 @@
+.hero {
+  background: linear-gradient(135deg, var(--color-dark), #3a302c);
+  color: var(--color-cream);
+}
+
+.hero__contenido {
+  padding: var(--space-7) var(--space-4);
+  max-width: 640px;
+}
+
+.hero__etiqueta {
+  font-size: var(--text-sm);
+  letter-spacing: 1px;
+  color: var(--color-gold);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.hero__titulo {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.hero__descripcion {
+  color: var(--color-cream);
+  opacity: 0.9;
+  margin-bottom: var(--space-5);
+}
+
+.hero__boton {
+  font-size: var(--text-base);
+}
+
+.seccion__cta {
+  margin-top: var(--space-5);
+  text-align: center;
+}
