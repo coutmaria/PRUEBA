@@ -1,0 +1,94 @@
+<ng-container *ngIf="(alojamiento$ | async) as alojamiento; else noEncontrado">
+  <section class="detalle contenedor">
+    <a routerLink="/alojamientos" class="detalle__volver">&larr; Volver al listado</a>
+
+    <app-galeria-imagenes
+      [imagenes]="alojamiento.imagenes"
+      [nombreAlojamiento]="alojamiento.nombre"
+    ></app-galeria-imagenes>
+
+    <div class="detalle__grid">
+      <div class="detalle__info">
+        <header class="detalle__header">
+          <span class="chip">{{ alojamiento.tipo }}</span>
+          <h1 class="detalle__nombre">{{ alojamiento.nombre }}</h1>
+          <p class="detalle__ubicacion">{{ alojamiento.ubicacion }} · {{ alojamiento.ciudad }}</p>
+          <p class="detalle__calificacion">
+            ★ {{ alojamiento.calificacion.toFixed(1) }} de calificacion
+          </p>
+        </header>
+
+        <p class="detalle__descripcion">{{ alojamiento.descripcion }}</p>
+
+        <ul class="detalle__caracteristicas">
+          <li>{{ alojamiento.capacidad }} huespedes</li>
+          <li>{{ alojamiento.habitaciones }} habitacion{{ alojamiento.habitaciones === 1 ? '' : 'es' }}</li>
+          <li>{{ alojamiento.camas }} cama{{ alojamiento.camas === 1 ? '' : 's' }}</li>
+          <li>{{ alojamiento.banos }} baño{{ alojamiento.banos === 1 ? '' : 's' }}</li>
+        </ul>
+
+        <section class="detalle__seccion">
+          <h2 class="detalle__seccion-titulo">Servicios disponibles</h2>
+          <ul class="detalle__chips">
+            <li class="chip" *ngFor="let servicio of alojamiento.servicios">{{ servicio }}</li>
+          </ul>
+        </section>
+
+        <section class="detalle__seccion">
+          <h2 class="detalle__seccion-titulo">Reglas basicas</h2>
+          <ul class="detalle__lista">
+            <li *ngFor="let regla of alojamiento.reglas">{{ regla }}</li>
+          </ul>
+        </section>
+
+        <section class="detalle__seccion">
+          <h2 class="detalle__seccion-titulo">Reseñas</h2>
+          <ng-container *ngIf="(resenas$ | async) as resenas">
+            <div class="detalle__resena" *ngFor="let resena of resenas">
+              <p class="detalle__resena-usuario">
+                {{ resena.usuario }} · ★ {{ resena.calificacion }}
+              </p>
+              <p class="detalle__resena-comentario">{{ resena.comentario }}</p>
+            </div>
+            <p class="detalle__sin-resenas" *ngIf="resenas.length === 0">
+              Este alojamiento aun no tiene reseñas.
+            </p>
+          </ng-container>
+        </section>
+      </div>
+
+      <aside class="detalle__reserva">
+        <app-cotizador
+          [alojamiento]="alojamiento"
+          (cotizacionGenerada)="onCotizacionGenerada($event)"
+        ></app-cotizador>
+
+        <app-formulario-reserva
+          *ngIf="cotizacionActual as cotizacion"
+          [alojamiento]="alojamiento"
+          [cotizacion]="cotizacion"
+          (reservaCreada)="onReservaCreada($event)"
+        ></app-formulario-reserva>
+
+        <div class="detalle__confirmacion tarjeta-panel" *ngIf="reservaConfirmada as reserva">
+          <h3 class="detalle__confirmacion-titulo">¡Reserva confirmada!</h3>
+          <p>
+            Tu reserva por {{ reserva.valorTotal | formatoPesos }} quedo en estado
+            <strong>{{ reserva.estado }}</strong>.
+          </p>
+          <a routerLink="/mis-reservas" class="boton boton--primario boton--ancho-completo">
+            Ver mis reservas
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</ng-container>
+
+<ng-template #noEncontrado>
+  <section class="contenedor detalle__no-encontrado">
+    <h1>Alojamiento no encontrado</h1>
+    <p>Puede que ya no este disponible o la direccion sea incorrecta.</p>
+    <a routerLink="/alojamientos" class="boton boton--primario">Ver todos los alojamientos</a>
+  </section>
+</ng-template>

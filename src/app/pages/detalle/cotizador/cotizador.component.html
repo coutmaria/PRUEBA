@@ -1,0 +1,77 @@
+<div class="cotizador tarjeta-panel">
+  <h2 class="cotizador__titulo">
+    {{ alojamiento.precioNoche | formatoPesos }}
+    <span class="cotizador__titulo-unidad">/ noche</span>
+  </h2>
+
+  <form class="cotizador__form" [formGroup]="formulario" (ngSubmit)="cotizar()">
+    <div class="cotizador__fechas">
+      <div class="campo">
+        <label class="campo__label" for="fecha-llegada">Llegada</label>
+        <input
+          id="fecha-llegada"
+          type="date"
+          class="campo__input"
+          [class.campo__input--error]="intentoCotizar && errores.length > 0"
+          [min]="fechaMinima"
+          formControlName="fechaLlegada"
+        />
+      </div>
+      <div class="campo">
+        <label class="campo__label" for="fecha-salida">Salida</label>
+        <input
+          id="fecha-salida"
+          type="date"
+          class="campo__input"
+          [class.campo__input--error]="intentoCotizar && errores.length > 0"
+          [min]="fechaMinima"
+          formControlName="fechaSalida"
+        />
+      </div>
+    </div>
+
+    <div class="campo">
+      <label class="campo__label" for="cotizador-huespedes">Huespedes</label>
+      <input
+        id="cotizador-huespedes"
+        type="number"
+        min="1"
+        [max]="alojamiento.capacidad"
+        class="campo__input"
+        [class.campo__input--error]="intentoCotizar && errores.length > 0"
+        formControlName="numHuespedes"
+      />
+      <p class="campo__ayuda">Capacidad maxima: {{ alojamiento.capacidad }} huespedes.</p>
+    </div>
+
+    <ul class="cotizador__errores" *ngIf="intentoCotizar && errores.length > 0">
+      <li class="campo__error" *ngFor="let error of errores">{{ error }}</li>
+    </ul>
+
+    <button type="submit" class="boton boton--secundario boton--ancho-completo">
+      Cotizar
+    </button>
+  </form>
+
+  <div class="cotizador__resultado" *ngIf="cotizacion as c">
+    <h3 class="cotizador__resultado-titulo">Resumen de tu cotizacion</h3>
+    <dl class="cotizador__desglose">
+      <div class="cotizador__linea">
+        <dt>{{ c.precioNoche | formatoPesos }} x {{ c.numNoches }} noche{{ c.numNoches === 1 ? '' : 's' }}</dt>
+        <dd>{{ c.subtotal | formatoPesos }}</dd>
+      </div>
+      <div class="cotizador__linea">
+        <dt>Tarifa de limpieza</dt>
+        <dd>{{ c.tarifaLimpieza | formatoPesos }}</dd>
+      </div>
+      <div class="cotizador__linea">
+        <dt>Tarifa de servicio (10%)</dt>
+        <dd>{{ c.tarifaServicio | formatoPesos }}</dd>
+      </div>
+      <div class="cotizador__linea cotizador__linea--total">
+        <dt>Total</dt>
+        <dd>{{ c.total | formatoPesos }}</dd>
+      </div>
+    </dl>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.formulario-reserva {
+  margin-top: var(--space-4);
+}
+
+.formulario-reserva__titulo {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.formulario-reserva__resumen {
+  font-size: var(--text-sm);
+  color: var(--color-gray);
+  margin-bottom: var(--space-4);
+}
+
+.formulario-reserva__errores {
+  margin-bottom: var(--space-3);
+}

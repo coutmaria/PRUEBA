@@ -1,0 +1,15 @@
+<div class="galeria">
+  <img class="galeria__principal" [src]="imagenActiva" [alt]="nombreAlojamiento" />
+
+  <div class="galeria__miniaturas" *ngIf="imagenes.length > 1">
+    <button
+      type="button"
+      class="galeria__miniatura-btn"
+      *ngFor="let imagen of imagenes"
+      [class.galeria__miniatura-btn--activa]="imagen === imagenActiva"
+      (click)="seleccionar(imagen)"
+    >
+      <img class="galeria__miniatura" [src]="imagen" [alt]="nombreAlojamiento" />
+    </button>
+  </div>
+</div>

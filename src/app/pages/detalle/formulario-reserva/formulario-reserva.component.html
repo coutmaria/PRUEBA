@@ -1,0 +1,40 @@
+<div class="formulario-reserva tarjeta-panel">
+  <h3 class="formulario-reserva__titulo">Confirma tu reserva</h3>
+  <p class="formulario-reserva__resumen">
+    Total a pagar: <strong>{{ cotizacion.total | formatoPesos }}</strong>
+    ({{ cotizacion.numNoches }} noche{{ cotizacion.numNoches === 1 ? '' : 's' }},
+    {{ cotizacion.numHuespedes }} huesped{{ cotizacion.numHuespedes === 1 ? '' : 'es' }})
+  </p>
+
+  <form [formGroup]="formulario" (ngSubmit)="reservar()">
+    <div class="campo">
+      <label class="campo__label" for="nombre-huesped">Nombre completo</label>
+      <input
+        id="nombre-huesped"
+        type="text"
+        class="campo__input"
+        placeholder="Nombre y apellido"
+        formControlName="nombreHuesped"
+      />
+    </div>
+
+    <div class="campo">
+      <label class="campo__label" for="correo-huesped">Correo electronico</label>
+      <input
+        id="correo-huesped"
+        type="email"
+        class="campo__input"
+        placeholder="correo@ejemplo.com"
+        formControlName="correoHuesped"
+      />
+    </div>
+
+    <ul class="formulario-reserva__errores" *ngIf="intentoReservar && errores.length > 0">
+      <li class="campo__error" *ngFor="let error of errores">{{ error }}</li>
+    </ul>
+
+    <button type="submit" class="boton boton--primario boton--ancho-completo">
+      Reservar
+    </button>
+  </form>
+</div>

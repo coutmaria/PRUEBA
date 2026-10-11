@@ -1,0 +1,124 @@
+.detalle {
+  padding: var(--space-4) var(--space-4) var(--space-7);
+}
+
+.detalle__volver {
+  display: inline-block;
+  color: var(--color-gray);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-3);
+}
+
+.detalle__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.detalle__header {
+  margin-bottom: var(--space-4);
+}
+
+.detalle__nombre {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-top: var(--space-2);
+}
+
+.detalle__ubicacion {
+  color: var(--color-gray);
+  margin-top: var(--space-1);
+}
+
+.detalle__calificacion {
+  font-weight: 600;
+  margin-top: var(--space-1);
+}
+
+.detalle__descripcion {
+  margin-bottom: var(--space-4);
+}
+
+.detalle__caracteristicas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  color: var(--color-gray);
+  font-size: var(--text-sm);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.detalle__seccion {
+  margin-bottom: var(--space-5);
+}
+
+.detalle__seccion-titulo {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+
+.detalle__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.detalle__lista li {
+  position: relative;
+  padding-left: var(--space-4);
+  margin-bottom: var(--space-2);
+  color: var(--color-gray);
+}
+
+.detalle__lista li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+.detalle__resena {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.detalle__resena-usuario {
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.detalle__resena-comentario {
+  color: var(--color-gray);
+}
+
+.detalle__sin-resenas {
+  color: var(--color-gray);
+}
+
+.detalle__confirmacion {
+  margin-top: var(--space-4);
+  text-align: center;
+}
+
+.detalle__confirmacion-titulo {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--color-green);
+}
+
+.detalle__no-encontrado {
+  padding: var(--space-7) var(--space-4);
+  text-align: center;
+}
+
+@media (min-width: 64rem) {
+  .detalle__grid {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+}

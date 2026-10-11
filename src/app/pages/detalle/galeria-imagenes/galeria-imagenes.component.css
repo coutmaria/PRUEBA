@@ -1,0 +1,35 @@
+.galeria__principal {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  background: var(--color-divider);
+}
+
+.galeria__miniaturas {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  overflow-x: auto;
+}
+
+.galeria__miniatura-btn {
+  flex: 0 0 auto;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: none;
+  cursor: pointer;
+}
+
+.galeria__miniatura-btn--activa {
+  border-color: var(--color-primary);
+}
+
+.galeria__miniatura {
+  width: 88px;
+  height: 64px;
+  object-fit: cover;
+  display: block;
+}
