@@ -1,0 +1,113 @@
+.tarjeta {
+  display: block;
+  background: var(--color-white);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  color: var(--color-dark);
+  transition: box-shadow var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.tarjeta:hover,
+.tarjeta:focus-visible {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.tarjeta__imagen-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-divider);
+}
+
+.tarjeta__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tarjeta__tipo {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  background: var(--color-white);
+  color: var(--color-dark);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+}
+
+.tarjeta__body {
+  padding: var(--space-3);
+}
+
+.tarjeta__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.tarjeta__nombre {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin: 0;
+}
+
+.tarjeta__calificacion {
+  flex-shrink: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.tarjeta__ciudad {
+  color: var(--color-gray);
+  font-size: var(--text-sm);
+  margin-top: var(--space-1);
+}
+
+.tarjeta__capacidad {
+  color: var(--color-gray);
+  font-size: var(--text-sm);
+}
+
+.tarjeta__servicios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0;
+}
+
+.tarjeta__servicio {
+  font-size: 0.75rem;
+  background: var(--color-cream);
+  color: var(--color-dark);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+}
+
+.tarjeta__servicio--mas {
+  background: transparent;
+  color: var(--color-gray);
+  padding-left: 0;
+}
+
+.tarjeta__precio {
+  margin-top: var(--space-3);
+  font-weight: 600;
+  font-size: var(--text-lg);
+  color: var(--color-primary);
+}
+
+.tarjeta__precio-unidad {
+  font-weight: 400;
+  font-size: var(--text-sm);
+  color: var(--color-gray);
+}

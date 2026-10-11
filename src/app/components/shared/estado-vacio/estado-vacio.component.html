@@ -1,0 +1,6 @@
+<div class="estado-vacio">
+  <span class="estado-vacio__icono" aria-hidden="true">{{ icono }}</span>
+  <p class="estado-vacio__titulo">{{ titulo }}</p>
+  <p class="estado-vacio__descripcion" *ngIf="descripcion">{{ descripcion }}</p>
+  <ng-content></ng-content>
+</div>

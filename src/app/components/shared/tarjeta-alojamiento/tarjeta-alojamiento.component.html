@@ -1,0 +1,36 @@
+<a class="tarjeta" [routerLink]="['/alojamiento', alojamiento.id]">
+  <div class="tarjeta__imagen-wrap">
+    <img
+      class="tarjeta__imagen"
+      [src]="alojamiento.imagenPrincipal"
+      [alt]="alojamiento.nombre"
+    />
+    <span class="tarjeta__tipo">{{ alojamiento.tipo }}</span>
+  </div>
+
+  <div class="tarjeta__body">
+    <div class="tarjeta__header">
+      <h3 class="tarjeta__nombre">{{ alojamiento.nombre }}</h3>
+      <span class="tarjeta__calificacion" aria-label="Calificacion">
+        ★ {{ alojamiento.calificacion.toFixed(1) }}
+      </span>
+    </div>
+
+    <p class="tarjeta__ciudad">{{ alojamiento.ciudad }}</p>
+    <p class="tarjeta__capacidad">Hasta {{ alojamiento.capacidad }} huespedes</p>
+
+    <ul class="tarjeta__servicios" *ngIf="alojamiento.servicios.length">
+      <li class="tarjeta__servicio" *ngFor="let servicio of serviciosVisibles">
+        {{ servicio }}
+      </li>
+      <li class="tarjeta__servicio tarjeta__servicio--mas" *ngIf="serviciosRestantes > 0">
+        +{{ serviciosRestantes }} mas
+      </li>
+    </ul>
+
+    <p class="tarjeta__precio">
+      {{ alojamiento.precioNoche | formatoPesos }}
+      <span class="tarjeta__precio-unidad">/ noche</span>
+    </p>
+  </div>
+</a>

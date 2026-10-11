@@ -1,0 +1,45 @@
+<header class="header">
+  <div class="header__inner">
+    <a routerLink="/" class="header__brand" (click)="cerrarMenu()">
+      <span class="header__brand-icon" aria-hidden="true">⛰</span>
+      <span class="header__brand-name">Montaña Stays</span>
+    </a>
+
+    <button
+      class="header__toggle"
+      type="button"
+      (click)="alternarMenu()"
+      [attr.aria-expanded]="menuAbierto"
+      aria-label="Abrir menu de navegacion"
+    >
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+    </button>
+
+    <nav class="header__nav" [class.header__nav--abierto]="menuAbierto">
+      <a
+        routerLink="/"
+        routerLinkActive="header__link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="header__link"
+        (click)="cerrarMenu()"
+        >Inicio</a
+      >
+      <a
+        routerLink="/alojamientos"
+        routerLinkActive="header__link--active"
+        class="header__link"
+        (click)="cerrarMenu()"
+        >Alojamientos</a
+      >
+      <a
+        routerLink="/mis-reservas"
+        routerLinkActive="header__link--active"
+        class="header__link"
+        (click)="cerrarMenu()"
+        >Mis reservas</a
+      >
+    </nav>
+  </div>
+</header>

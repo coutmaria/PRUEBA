@@ -1,0 +1,25 @@
+.estado-vacio {
+  text-align: center;
+  padding: var(--space-6) var(--space-4);
+  color: var(--color-gray);
+}
+
+.estado-vacio__icono {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: var(--space-3);
+}
+
+.estado-vacio__titulo {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: var(--space-1);
+}
+
+.estado-vacio__descripcion {
+  font-size: var(--text-base);
+  max-width: 40ch;
+  margin: 0 auto;
+}
