@@ -1,0 +1,11 @@
+.listado__contador {
+  color: var(--color-gray);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-3);
+}
+
+.listado__cargando {
+  color: var(--color-gray);
+  padding: var(--space-6) 0;
+  text-align: center;
+}

@@ -1,0 +1,51 @@
+<form class="filtros" [formGroup]="formulario">
+  <div class="filtros__campo">
+    <label class="campo__label" for="filtro-ciudad">Ciudad</label>
+    <select id="filtro-ciudad" class="campo__select" formControlName="ciudad">
+      <option [ngValue]="null">Todas las ciudades</option>
+      <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">{{ ciudad }}</option>
+    </select>
+  </div>
+
+  <div class="filtros__campo">
+    <label class="campo__label" for="filtro-huespedes">Huespedes</label>
+    <input
+      id="filtro-huespedes"
+      type="number"
+      min="1"
+      class="campo__input"
+      placeholder="Cualquier cantidad"
+      formControlName="numHuespedes"
+    />
+  </div>
+
+  <div class="filtros__campo">
+    <label class="campo__label" for="filtro-tipo">Tipo de alojamiento</label>
+    <select id="filtro-tipo" class="campo__select" formControlName="tipo">
+      <option [ngValue]="null">Todos los tipos</option>
+      <option *ngFor="let tipo of tipos" [ngValue]="tipo">{{ tipo }}</option>
+    </select>
+  </div>
+
+  <div class="filtros__campo">
+    <label class="campo__label" for="filtro-precio">Precio maximo / noche</label>
+    <input
+      id="filtro-precio"
+      type="number"
+      min="0"
+      step="10000"
+      class="campo__input"
+      placeholder="Sin limite"
+      formControlName="precioMaximo"
+    />
+  </div>
+
+  <button
+    type="button"
+    class="boton boton--texto filtros__limpiar"
+    (click)="limpiarFiltros()"
+    [disabled]="!hayFiltrosActivos"
+  >
+    Limpiar filtros
+  </button>
+</form>

@@ -1,0 +1,25 @@
+.filtros {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  background: var(--color-cream);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-5);
+  align-items: end;
+}
+
+.filtros__campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.filtros__limpiar {
+  justify-self: start;
+}
+
+@media (min-width: 48rem) {
+  .filtros {
+    grid-template-columns: repeat(4, 1fr) auto;
+  }
+}

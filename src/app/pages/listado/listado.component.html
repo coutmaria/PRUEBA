@@ -1,0 +1,37 @@
+<section class="seccion contenedor">
+  <h1 class="seccion__titulo">Alojamientos disponibles</h1>
+  <p class="seccion__subtitulo">Filtra por ciudad, huespedes, tipo o presupuesto.</p>
+
+  <app-filtros-alojamientos
+    [ciudades]="(ciudades$ | async) ?? []"
+    [tipos]="(tipos$ | async) ?? []"
+    (filtrosCambiaron)="onFiltrosCambiaron($event)"
+  ></app-filtros-alojamientos>
+
+  <ng-container *ngIf="(alojamientosFiltrados$ | async) as lista; else cargando">
+    <p class="listado__contador">
+      {{ lista.length }} alojamiento{{ lista.length === 1 ? '' : 's' }} encontrado{{
+        lista.length === 1 ? '' : 's'
+      }}
+    </p>
+
+    <div class="grid-alojamientos" *ngIf="lista.length > 0; else sinResultados">
+      <app-tarjeta-alojamiento
+        *ngFor="let alojamiento of lista"
+        [alojamiento]="alojamiento"
+      ></app-tarjeta-alojamiento>
+    </div>
+
+    <ng-template #sinResultados>
+      <app-estado-vacio
+        icono="🏝️"
+        titulo="No encontramos alojamientos con esos filtros"
+        descripcion="Intenta ampliar tu busqueda: cambia la ciudad, el presupuesto o limpia los filtros."
+      ></app-estado-vacio>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #cargando>
+    <p class="listado__cargando">Cargando alojamientos…</p>
+  </ng-template>
+</section>
