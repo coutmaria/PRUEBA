@@ -1,0 +1,14 @@
+.no-encontrado {
+  text-align: center;
+  padding: var(--space-7) var(--space-4);
+}
+
+.no-encontrado__titulo {
+  font-size: 4rem;
+  color: var(--color-primary);
+}
+
+.no-encontrado__texto {
+  color: var(--color-gray);
+  margin-bottom: var(--space-4);
+}

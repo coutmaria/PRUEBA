@@ -1,0 +1,39 @@
+<section class="seccion contenedor">
+  <h1 class="seccion__titulo">Mis reservas</h1>
+  <p class="seccion__subtitulo">Reservas simuladas realizadas durante esta sesion.</p>
+
+  <ng-container *ngIf="(reservas$ | async) as reservas">
+    <div class="reservas__lista" *ngIf="reservas.length > 0; else sinReservas">
+      <article class="reserva-item tarjeta-panel" *ngFor="let reserva of reservas">
+        <img
+          class="reserva-item__imagen"
+          [src]="reserva.alojamiento.imagenPrincipal"
+          [alt]="reserva.alojamiento.nombre"
+        />
+
+        <div class="reserva-item__info">
+          <div class="reserva-item__header">
+            <h2 class="reserva-item__nombre">{{ reserva.alojamiento.nombre }}</h2>
+            <span class="reserva-item__estado">{{ reserva.estado }}</span>
+          </div>
+          <p class="reserva-item__ciudad">{{ reserva.alojamiento.ciudad }}</p>
+          <p class="reserva-item__fechas">
+            {{ reserva.fechaLlegada }} → {{ reserva.fechaSalida }} ·
+            {{ reserva.numHuespedes }} huesped{{ reserva.numHuespedes === 1 ? '' : 'es' }}
+          </p>
+          <p class="reserva-item__total">{{ reserva.valorTotal | formatoPesos }}</p>
+        </div>
+      </article>
+    </div>
+
+    <ng-template #sinReservas>
+      <app-estado-vacio
+        icono="🧳"
+        titulo="Aun no tienes reservas"
+        descripcion="Cuando reserves un alojamiento, apareceran aqui."
+      >
+        <a routerLink="/alojamientos" class="boton boton--primario">Explorar alojamientos</a>
+      </app-estado-vacio>
+    </ng-template>
+  </ng-container>
+</section>

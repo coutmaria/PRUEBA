@@ -1,0 +1,75 @@
+.reservas__lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.reserva-item {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.reserva-item__imagen {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.reserva-item__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.reserva-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.reserva-item__nombre {
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.reserva-item__estado {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-green);
+  background: #e9f0e3;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.reserva-item__ciudad {
+  color: var(--color-gray);
+  font-size: var(--text-sm);
+}
+
+.reserva-item__fechas {
+  font-size: var(--text-sm);
+  color: var(--color-gray);
+  margin-top: var(--space-1);
+}
+
+.reserva-item__total {
+  font-weight: 700;
+  margin-top: var(--space-1);
+  color: var(--color-primary);
+}
+
+@media (max-width: 30rem) {
+  .reserva-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reserva-item__imagen {
+    width: 100%;
+    height: 140px;
+  }
+}
